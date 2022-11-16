@@ -21,7 +21,7 @@ spec:
         - mongod
         - "--bind_ip_all"
         - "--replSet"
-        - rs1 
+        - rs0
         ports:
         - containerPort: 27017
         volumeMounts: 
