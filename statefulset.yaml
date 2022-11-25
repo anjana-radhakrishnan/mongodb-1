@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata: 
-  name: mongodb
+  name: javaapp
   namespace: mongo
 spec:
   serviceName: mongo-svc
   replicas: 1
   selector:
     matchLabels:
-      app: mongodb
+      app: javaapp
   template: 
     metadata:
       labels:
-        app: mongodb
+        app: javaapp
     spec:
       containers:
       - name: javaapp
@@ -50,7 +50,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-      app: mongodb
+      app: javaapp
   ports:
     - port: 27017
       targetPort: 27017
