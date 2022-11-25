@@ -15,8 +15,8 @@ spec:
         app: mongodb
     spec:
       containers:
-      - name: mongo
-        image: mongo
+      - name: javaapp
+        image: javaimage
         command:
         - mongod
         - "--bind_ip_all"
