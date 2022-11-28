@@ -1,53 +1,40 @@
 apiVersion: apps/v1
-kind: StatefulSet
-metadata: 
-  name: javaapp-new
-  namespace: mongo
+
+kind: Deployment
+
+metadata:
+
+  name: java-deployment
+
+  labels:
+
+    app: java
+
 spec:
-  serviceName: mongo-svc
+
   replicas: 1
+
   selector:
+
     matchLabels:
-      app: javaapp
-  template: 
+
+      app: java
+
+  template:
+
     metadata:
+
       labels:
-        app: javaapp
+
+        app: java
+
     spec:
+
       containers:
       - name: javaapp
         image: anjanar17/argocd-java:latest
         command: ["sleep", "4800"]
-        ports:
-        - containerPort: 27017
-        volumeMounts: 
-        - name: mongodb-data
-          mountPath: /data/db
-      # volumes:
-      # - name: mongo-data-dir
-      #   persistentVolumeClaim:
-      #     claimName: ebs-claim    
-  volumeClaimTemplates:
-  - metadata: 
-      name: mongodb-data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: gp2
-      resources: 
-        requests: 
-          storage: 1Gi
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mongo-svc
-  namespace: mongo
-spec:
-  type: ClusterIP
-  selector:
-      app: javaapp
-  ports:
-    - port: 27017
-      targetPort: 27017
----
+        ports:
+
+        - containerPort: 80
