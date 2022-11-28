@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: javaapp
-        image: javaimage
+        image: anjanar17/argocd-java:latest
         command:
         - mongod
         - "--bind_ip_all"
