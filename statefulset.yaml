@@ -17,11 +17,7 @@ spec:
       containers:
       - name: javaapp
         image: anjanar17/argocd-java:latest
-        command:
-        - mongod
-        - "--bind_ip_all"
-        - "--replSet"
-        - rs0
+        command: ["sleep", "4800"]
         ports:
         - containerPort: 27017
         volumeMounts: 
